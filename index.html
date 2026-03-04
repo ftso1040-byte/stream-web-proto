@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ウェブ制作のご相談窓口 | ストリーム株式会社</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* 基本設定 */
+        :root {
+            --main-color: #2C3E50; /* ミッドナイトブルー */
+            --accent-color: #E67E22; /* アクセントオレンジ */
+            --bg-color: #F8FAFC; /* ほんのり青みのあるオフホワイト */
+            --text-color: #334155;
+            --border-color: #CBD5E1;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+        }
+
+        /* レイアウト */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        /* 会社名ヘッダー */
+        .top-header {
+            background-color: #ffffff;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .company-name {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--main-color);
+            margin: 0;
+            letter-spacing: 0.05em;
+            display: flex;
+            align-items: center;
+        }
+
+        .company-name::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 24px;
+            background-color: var(--accent-color);
+            margin-right: 12px;
+            border-radius: 4px;
+        }
+
+        /* ヒーローセクション */
+        .hero {
+            background-color: var(--main-color);
+            color: #fff;
+            text-align: center;
+            padding: 100px 20px;
+            background-image: linear-gradient(135deg, #1A252F 0%, #2C3E50 100%);
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            line-height: 1.8;
+        }
+
+        .pc-only {
+            display: inline;
+        }
+
+        /* 強みセクション */
+        .features {
+            background: #fff;
+            text-align: center;
+        }
+
+        .section-title {
+            text-align: center;
+            color: var(--main-color);
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            margin-top: 0;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .feature-item {
+            padding: 30px 20px;
+            background: #fff;
+            border: 1px solid #E2E8F0;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .feature-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-item h3 {
+            color: var(--main-color);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        /* フォームセクション */
+        .contact {
+            background-color: var(--bg-color);
+        }
+
+        .contact-box {
+            background: #fff;
+            padding: 50px 40px;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
+
+        .contact-subtitle {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #64748B;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        label {
+            display: block;
+            font-weight: 700;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+            color: var(--main-color);
+            cursor: pointer;
+        }
+
+        .required {
+            background-color: #EF4444;
+            color: white;
+            font-size: 0.75rem;
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-left: 8px;
+            vertical-align: middle;
+        }
+
+        .optional {
+            background-color: #94A3B8;
+            color: white;
+            font-size: 0.75rem;
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-left: 8px;
+            vertical-align: middle;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid var(--border-color);
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-size: 1rem;
+            background-color: #F8FAFC;
+            transition: all 0.3s;
+            font-family: inherit;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            background-color: #fff;
+            box-shadow: 0 0 0 3px rgba(230, 126, 34, 0.1);
+        }
+
+        .btn-submit {
+            display: block;
+            width: 100%;
+            padding: 20px;
+            background-color: var(--accent-color);
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.25rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 10px;
+            box-shadow: 0 4px 6px rgba(230, 126, 34, 0.3);
+        }
+
+        .btn-submit:hover {
+            background-color: #D35400;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(230, 126, 34, 0.4);
+        }
+
+        .notice {
+            margin-top: 24px;
+            font-size: 0.9rem;
+            color: #64748B;
+            text-align: center;
+            background-color: #F1F5F9;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        /* フッター */
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            font-size: 0.85rem;
+            color: #94A3B8;
+            background-color: var(--main-color);
+        }
+
+        footer p {
+            margin: 10px 0;
+            color: #CBD5E1;
+        }
+
+        footer a {
+            color: #fff;
+            text-decoration: none;
+            border-bottom: 1px dotted #fff;
+            cursor: pointer;
+        }
+
+        footer a:hover {
+            color: var(--accent-color);
+            border-bottom-color: var(--accent-color);
+        }
+
+        /* プライバシーポリシーモーダル */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            backdrop-filter: blur(4px);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 40px;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .close-btn {
+            color: #aaa;
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close-btn:hover {
+            color: #333;
+        }
+
+        /* スマホ用設定 */
+        @media (max-width: 600px) {
+            .hero { padding: 60px 20px; }
+            .hero h1 { font-size: 1.8rem; }
+            .hero p { font-size: 1rem; }
+            .pc-only { display: none; }
+            
+            section { padding: 50px 0; }
+            .section-title { font-size: 1.5rem; }
+            
+            .contact-box { padding: 30px 20px; }
+            .btn-submit { padding: 16px; font-size: 1.1rem; }
+            
+            .modal-content { padding: 30px 20px; width: 95%; margin: 10% auto; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 会社名ヘッダー -->
+    <header class="top-header">
+        <div class="container">
+            <h2 class="company-name">ストリーム株式会社</h2>
+        </div>
+    </header>
+
+    <!-- ヒーローセクション -->
+    <section class="hero">
+        <div class="container">
+            <h1>Webのことは、丸投げで大丈夫です。</h1>
+            <p>最速・最短で、あなたのビジネスを形にします。<br>
+            「相場がわからない」「何が必要か不明」そんなお悩みも、<br class="pc-only">まずはご相談ください。</p>
+        </div>
+    </section>
+
+    <!-- 強みセクション -->
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">私たちが選ばれる理由</h2>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <h3>🚀 爆速レスポンス</h3>
+                    <p>「まずは話を進めたい」にお応えします。<br><strong>2営業日以内</strong>に必ず第一報を差し上げます。</p>
+                </div>
+                <div class="feature-item">
+                    <h3>🤝 専門用語は使いません</h3>
+                    <p>Webに詳しくない方でも安心。<br>お客様の言葉を、私たちがWebの形に翻訳します。</p>
+                </div>
+                <div class="feature-item">
+                    <h3>💰 柔軟な予算提案</h3>
+                    <p>決まった型はありません。<br>あなたのご予算と目的に合わせて、最適な構成をご提案します。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 問い合わせフォーム -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-box">
+                <h2 class="section-title">お問い合わせ・ご相談</h2>
+                <p class="contact-subtitle">以下のフォームよりお気軽にご連絡ください。<br>担当者より原則2営業日以内にご返信いたします。</p>
+                
+                <!-- 【変更箇所】ここから：Formspreeを使って指定のメールアドレスに飛ばす設定にしました -->
+                <form action="https://formspree.io/f/YOUR_FORM_ID_HERE" method="POST">
+                    
+                    <!-- 管理用：受信するメールの件名を分かりやすく固定する隠し設定 -->
+                    <input type="hidden" name="_subject" value="【新規お問合せ】ウェブ制作窓口（ストリーム株式会社）より">
+
+                    <div class="form-group">
+                        <label for="name">お名前 <span class="required">必須</span></label>
+                        <input type="text" id="name" name="お名前" placeholder="例：山田 太郎" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="company">貴社名・屋号 <span class="optional">任意</span></label>
+                        <input type="text" id="company" name="貴社名" placeholder="例：株式会社〇〇">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">メールアドレス <span class="required">必須</span></label>
+                        <input type="email" id="email" name="email" placeholder="example@gmail.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="type">ご相談の種類 <span class="required">必須</span></label>
+                        <select id="type" name="ご相談の種類" required>
+                            <option value="">選択してください</option>
+                            <option value="新しくホームページを作りたい">新しくホームページを作りたい</option>
+                            <option value="今のサイトを新しくしたい">今のサイトを新しくしたい</option>
+                            <option value="サイトを少しだけ直したい">サイトを少しだけ直したい</option>
+                            <option value="まだ何も決まっていないが相談したい">まだ何も決まっていないが相談したい</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="budget">ご予算のイメージ <span class="required">必須</span></label>
+                        <select id="budget" name="ご予算のイメージ" required>
+                            <option value="">選択してください</option>
+                            <option value="まずは相談して決めたい">まずは相談して決めたい</option>
+                            <option value="できるだけ抑えたい（〜10万円）">できるだけ抑えたい（〜10万円）</option>
+                            <option value="標準的に作りたい（15〜30万円）">標準的に作りたい（15〜30万円）</option>
+                            <option value="しっかり作り込みたい（50万円〜）">しっかり作り込みたい（50万円〜）</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">ご相談内容 <span class="optional">任意</span></label>
+                        <textarea id="message" name="ご相談内容" rows="5" placeholder="「何から話せばいいかわからない」という状態でも大丈夫です。現在のお悩みをご記入ください。"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn-submit">この内容で相談する（無料）</button>
+                    
+                    <div class="notice">
+                        <strong>【ご安心ください】</strong><br>
+                        強引な営業電話などは一切行いません。<br>専門用語を使わず、わかりやすく丁寧にお話しさせていただきます。
+                    </div>
+                </form>
+                <!-- 【変更箇所】ここまで -->
+
+            </div>
+        </div>
+    </section>
+
+    <!-- フッター -->
+    <footer>
+        <div class="container">
+            <p><a id="policy-btn">プライバシーポリシー</a></p>
+            <p>&copy; 2026 ストリーム株式会社. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- プライバシーポリシーのモーダル -->
+    <div id="policy-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" id="close-modal">&times;</span>
+            <h2 style="color: var(--main-color); margin-top: 0; border-bottom: 2px solid var(--accent-color); padding-bottom: 10px;">プライバシーポリシー</h2>
+            <p>本窓口（以下、「当窓口」といいます）は、お問い合わせいただいたお客様の個人情報を適切に守るため、以下の通りプライバシーポリシーを定めます。</p>
+            
+            <h4 style="margin-bottom: 5px;">1. 個人情報の取得について</h4>
+            <p style="font-size: 0.9rem; margin-top: 0;">当窓口では、お問い合わせフォームを通じて、お名前・メールアドレス・ご相談内容などの個人情報を取得いたします。</p>
+            
+            <h4 style="margin-bottom: 5px;">2. 利用目的について</h4>
+            <p style="font-size: 0.9rem; margin-top: 0;">お預かりした個人情報は、お問い合わせに対する回答、ご依頼いただいた業務に関するご連絡、およびサービスの改善のためにのみ利用いたします。</p>
+            
+            <h4 style="margin-bottom: 5px;">3. 第三者への提供について</h4>
+            <p style="font-size: 0.9rem; margin-top: 0;">当窓口は、法令に基づく場合を除き、お客様の同意を得ることなく個人情報を第三者に提供することはありません。</p>
+            
+            <h4 style="margin-bottom: 5px;">4. お問い合わせ窓口</h4>
+            <p style="font-size: 0.9rem; margin-top: 0;">本ポリシーに関するお問い合わせは、担当者までご連絡ください。</p>
+        </div>
+    </div>
+
+    <!-- モーダル用JavaScript -->
+    <script>
+        const modal = document.getElementById("policy-modal");
+        const btn = document.getElementById("policy-btn");
+        const span = document.getElementById("close-modal");
+
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+
+</body>
+</html>
+
